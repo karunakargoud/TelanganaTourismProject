@@ -1,0 +1,59 @@
+﻿@model TouristPlacesProject.Models.TouristPlace
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TouristPlace</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.touristPlaceType.TouristPlaceTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.touristPlaceType.TouristPlaceTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TouristPlaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TouristPlaceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TouristPlaceDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TouristPlaceDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoreInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoreInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>*@
+         <img src=@Model.ImagePath alt="@Model.TouristPlaceName" width="200" height="200"/>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TouristPlaceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

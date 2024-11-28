@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<style>
+    #vb {
+        color: red;
+    }
+</style>
+<h2>Admin Login</h2>
+@using (Html.BeginForm("Admin", "Tourist", FormMethod.Post))
+{
+
+    <table>
+        <tr>
+            <th>User Name </th>
+            <th>@Html.TextBox("AdminName")</th>
+        </tr>
+        <tr>
+            <th>Password </th>
+            <th>@Html.TextBox("AdminPassword")</th>
+            <th>
+                @if (ViewBag.Message != null)
+                {
+                    <div id="vb">
+                        @ViewBag.Message
+                    </div>
+
+                }
+            </th>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <th><input type="submit" class="btn btn-primary" /></th>
+        </tr>
+    </table>
+
+    @Html.ActionLink("Back to Home", "Home")
+}
+

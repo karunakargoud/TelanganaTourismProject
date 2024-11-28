@@ -1,0 +1,92 @@
+﻿@model IEnumerable<TouristPlacesProject.Models.TouristPlace>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <div class="container">
+        @*@Html.ActionLink("Tourist Places", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li>@Html.ActionLink("Telangana Tourism", "Index", "Tourist", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>||
+                <li>@Html.ActionLink("Logout", "Logout", "Tourist")</li>
+                @*<li>@Html.ActionLink("Tourist Places", "Index", "Tourist", new { area = "" }, new { @class = "nav-link" })</li>*@
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<t>
+    </t>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Telangana Tourism</h2>
+
+<form method="get" action="@Url.Action("Index", "Tourist")">
+    <div class="form-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by Name" value="@Request.QueryString["searchString"]" />
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </div>
+</form>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.touristPlaceType.TouristPlaceTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TouristPlaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TouristPlaceDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoreInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.touristPlaceType.TouristPlaceTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TouristPlaceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TouristPlaceDescription)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.MoreInfo)
+                </td>*@
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ImagePath)*@
+                <a href="@item.MoreInfo" target="_blank">For Moreinfo</a>
+            </td>
+            <td>
+                <img src="@item.ImagePath"
+                     alt="@item.TouristPlaceName"
+                     width="200"
+                     height="100" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TouristPlaceId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TouristPlaceId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TouristPlaceId })
+            </td>
+        </tr>
+    }
+
+</table>
